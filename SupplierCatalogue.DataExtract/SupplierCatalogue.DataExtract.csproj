@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <Authors>Nigel Anderton</Authors>
+    <Company>Hitched Ltd</Company>
+    <Description>Supplier data extract for the Hitched supplier catalogue.</Description>
+    <Copyright>2017 Hitched Litd</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1705; AD0001; SA1636; SA1633</NoWarn>
+    <DocumentationFile>bin\Debug\netcoreapp1.1\SupplierCatalogue.DataExtract.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1705; AD0001; SA1636; SA1633</NoWarn>
+    <DocumentationFile>bin\Release\netcoreapp1.1\SupplierCatalogue.DataExtract.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Queries\SupplierFaqs.sql" />
+    <None Remove="Queries\SupplierImages.sql" />
+    <None Remove="Queries\SupplierListings.sql" />
+    <None Remove="Queries\SuppliersMain.sql" />
+    <None Remove="Queries\SuppliersMainNoLimit.sql" />
+    <None Remove="Queries\SuppliersNoLimit.sql" />
+    <None Remove="Queries\xml\Suppliers.sql" />
+    <None Remove="Queries\xml\SuppliersNoLimit.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Queries\json\Suppliers.sql" />
+    <EmbeddedResource Include="Queries\json\SuppliersNoLimit.sql">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Queries\SupplierFaqs.sql" />
+    <EmbeddedResource Include="Queries\SupplierImages.sql" />
+    <EmbeddedResource Include="Queries\SupplierListings.sql" />
+    <EmbeddedResource Include="Queries\SuppliersMain.sql" />
+    <EmbeddedResource Include="Queries\SuppliersMainNoLimit.sql" />
+    <EmbeddedResource Include="Queries\xml\Suppliers.sql" />
+    <EmbeddedResource Include="Queries\xml\SuppliersNoLimit.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.1.1" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta001" />
+    <PackageReference Include="System.Net.Http" Version="4.3.1" />
+    <PackageReference Include="System.Runtime.Serialization.Json" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SupplierCatalogue.Models\SupplierCatalogue.Models.csproj" />
+  </ItemGroup>
+
+</Project>
